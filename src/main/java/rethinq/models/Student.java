@@ -21,6 +21,10 @@ public class Student {
     private String lastName;
     @NotNull
     private String email;
+    @NotNull
+    private String username;
+    @NotNull
+    private String password;
 
     @Enumerated(EnumType.STRING)
     private CollegeYear collegeYear;
@@ -130,5 +134,21 @@ public class Student {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
