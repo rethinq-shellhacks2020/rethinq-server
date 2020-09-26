@@ -44,6 +44,11 @@ public class StudentController {
         return studentRepository.findAll();
     }
 
+    @GetMapping(path = "{id}")
+    public Optional<Student> findStudentById(@PathVariable("id") Long id){
+        return studentRepository.findById(id);
+    }
+
 
 
 }
