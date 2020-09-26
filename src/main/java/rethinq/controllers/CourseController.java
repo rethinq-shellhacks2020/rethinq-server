@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import rethinq.models.Course;
 import rethinq.repositories.CourseRepository;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RequestMapping("api/courses")
@@ -17,6 +18,11 @@ public class CourseController {
     @GetMapping
     public List<Course> getAllCourses(){
         return courseRepository.findAll();
+    }
+
+    @GetMapping(path = "{id}")
+    public Optional<Course> getAllCourses(@PathVariable("id") Long id){
+        return courseRepository.findById(id);
     }
 
     @PostMapping(path = "/add")
