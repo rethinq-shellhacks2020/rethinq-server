@@ -37,6 +37,9 @@ public class Student {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tutor")
     private List<TutorRequest> tutorRequestsReceived;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tutor")
+    private List<TutorCourse> myCourses;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "student")
     private List<PaymentMethod> paymentMethods;
 
@@ -150,5 +153,13 @@ public class Student {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<TutorCourse> getMyCourses() {
+        return myCourses;
+    }
+
+    public void setMyCourses(List<TutorCourse> myCourses) {
+        this.myCourses = myCourses;
     }
 }
