@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import rethinq.models.enums.CollegeYear;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
@@ -42,6 +43,10 @@ public class Student {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "student")
     private List<PaymentMethod> paymentMethods;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "student")
+    @Size(min=1, max=7)
+    private List<Availability> availability;
 
     @CreationTimestamp
     private Date createdAt;
@@ -161,5 +166,13 @@ public class Student {
 
     public void setMyCourses(List<TutorCourse> myCourses) {
         this.myCourses = myCourses;
+    }
+
+    public List<Availability> getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(List<Availability> availability) {
+        this.availability = availability;
     }
 }

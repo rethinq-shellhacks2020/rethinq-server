@@ -55,4 +55,9 @@ public class TutorCourseController {
     public List<TutorCourse> getAllTutorCourses(){
         return tutorCourseRepository.findAll();
     }
+
+    @GetMapping(path = "{id}")
+    public Optional<TutorCourse> getTutorCourseById(@PathVariable("id") Long id){
+        return tutorCourseRepository.findById(id);
+    }
 }

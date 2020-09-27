@@ -6,11 +6,13 @@ import rethinq.models.Student;
 import rethinq.models.TutorCourse;
 import rethinq.models.TutorRequest;
 import rethinq.models.enums.TutorRequestStatus;
+import rethinq.models.types.RequestDetails;
 import rethinq.models.types.SessionBooking;
 import rethinq.repositories.StudentRepository;
 import rethinq.repositories.TutorCourseRepository;
 import rethinq.repositories.TutorRequestRepository;
 
+import javax.swing.text.html.Option;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,6 +31,16 @@ public class TutorRequestController {
     public TutorCourseRepository tutorCourseRepository;
     @Autowired
     public StudentRepository studentRepository;
+
+    @GetMapping(path = "{id}")
+    public RequestDetails getTutorRequestDetails(@PathVariable("id") Long id){
+        Optional<TutorRequest> tutorRequest = tutorRequestRepository.findById(id);
+        if(!tutorRequest.isPresent()){
+            throw new Error("Cannot find tutor request with id: " + id);
+        }
+        RequestDetails requestDetails = new RequestDetails(tutorRequest.get().getTutorCourse().getCourse(), tutorRequest.get().getTutorCourse());
+        return requestDetails;
+    }
 
     @PostMapping(path = "{tutorCourseId}/for={studentId}")
     public TutorRequest requestTutoring(@PathVariable("tutorCourseId") Long tutorCourseId, @PathVariable("studentId") Long studentId, @RequestBody SessionBooking booking) throws ParseException {

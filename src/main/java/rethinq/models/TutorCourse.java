@@ -25,10 +25,6 @@ public class TutorCourse {
     private Course course;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tutorCourse")
-    @Size(min=1, max=7)
-    private List<Availability> availability;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tutorCourse")
     private List<TutorRequest> tutorRequests;
 
     public TutorCourse() {
@@ -88,14 +84,6 @@ public class TutorCourse {
 
     public void setCourse(Course course) {
         this.course = course;
-    }
-
-    public List<Availability> getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(List<Availability> availability) {
-        this.availability = availability;
     }
 
     public List<TutorRequest> getTutorRequests() {

@@ -1,5 +1,7 @@
 package rethinq.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class Course {
     private Long id;
     private String name;
     private String code;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "course")
     private List<TutorCourse> tutoringOptions;
 
@@ -47,4 +50,5 @@ public class Course {
     public void setTutoringOptions(List<TutorCourse> tutoringOptions) {
         this.tutoringOptions = tutoringOptions;
     }
+
 }

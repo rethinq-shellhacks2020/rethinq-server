@@ -16,9 +16,10 @@ public class Availability {
     private Boolean morning;
     private Boolean afternoon;
     private Boolean evening;
+
     @JsonIgnore
     @ManyToOne
-    private TutorCourse tutorCourse;
+    private Student student;
 
     public Availability() {
     }
@@ -63,11 +64,11 @@ public class Availability {
         this.evening = evening;
     }
 
-    public TutorCourse getTutorCourse() {
-        return tutorCourse;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setTutorCourse(TutorCourse tutorCourse) {
-        this.tutorCourse = tutorCourse;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }
