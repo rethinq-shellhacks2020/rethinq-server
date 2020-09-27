@@ -60,4 +60,13 @@ public class TutorCourseController {
     public Optional<TutorCourse> getTutorCourseById(@PathVariable("id") Long id){
         return tutorCourseRepository.findById(id);
     }
+
+    @GetMapping(path = "{id}/tutor")
+    public Student getTutorInfoByTutorCourseId(@PathVariable("id") Long id){
+        Optional<TutorCourse> tutorCourse = tutorCourseRepository.findById(id);
+        if(!tutorCourse.isPresent()){
+            throw new Error("Cannot find tutor course with id: " + id);
+        }
+        return tutorCourse.get().getTutor();
+    }
 }

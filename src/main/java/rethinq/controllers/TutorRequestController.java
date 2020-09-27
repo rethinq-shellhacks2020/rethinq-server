@@ -12,7 +12,6 @@ import rethinq.repositories.StudentRepository;
 import rethinq.repositories.TutorCourseRepository;
 import rethinq.repositories.TutorRequestRepository;
 
-import javax.swing.text.html.Option;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
